@@ -15,3 +15,10 @@ buttonsSlide.forEach((button) => {
     button.classList.add('active-button');
   });
 });
+
+const formContact = document.querySelector('.form-contact');
+
+formContact.addEventListener('submit', (e) => {
+  e.preventDefault();
+  //logica para enviar formulario
+});
