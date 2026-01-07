@@ -5,24 +5,24 @@ get_header();
 
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
-<section>
-  <div id="mainCarousel" class="carousel slide pt-5 px-4" data-bs-ride="carousel">
+<section class="pt-5 pb-5 carousel-section">
+  <div id="mainCarousel" class="carousel slide pb-3 px-4" data-bs-ride="carousel">
     <div class="carousel-inner">
 
-      <div class="carousel-item active">
-        <img src="<?php echo  get_template_directory_uri() ?>/img/placeholder.gif" alt="Primeiro Slide">
+      <div class="carousel-item active rounded">
+        <img src="<?php echo  get_template_directory_uri() ?>/img/placeholder.jpg" alt="Primeiro Slide">
       </div>
 
-      <div class="carousel-item">
-        <img src="<?php echo get_template_directory_uri() ?>/img/placeholder.gif" alt="Segundo Slide">
+      <div class="carousel-item rounded">
+        <img src="<?php echo get_template_directory_uri() ?>/img/placeholder.jpg" alt="Segundo Slide">
       </div>
 
-      <div class="carousel-item">
-        <img src="<?php echo  get_template_directory_uri() ?>/img/placeholder.gif" alt="Terceiro Slide">
+      <div class="carousel-item rounded">
+        <img src="<?php echo  get_template_directory_uri() ?>/img/placeholder.jpg" alt="Terceiro Slide">
       </div>
 
-      <div class="carousel-item">
-        <img src="<?php echo  get_template_directory_uri() ?>/img/placeholder.gif" alt="Quarto Slide">
+      <div class="carousel-item rounded">
+        <img src="<?php echo  get_template_directory_uri() ?>/img/placeholder.jpg" alt="Quarto Slide">
       </div>
 
       <button class="carousel-control-prev carousel-control" type="button" data-bs-target="#mainCarousel"
@@ -50,8 +50,25 @@ get_header();
   </div>
 </section>
 
-<section id="quemsomos">
-  <h1>Teste</h1>
+<section id="quemsomos" class="pb-5 pt-5">
+  <div class="container">
+    <h1 class="font-36 mb-5">Quem somos</h1>
+    <div class="quemsomos-content row gap-5">
+      <div class="quemsomos-image-container rounded col-12 col-md">
+        <img src="<?php echo  get_template_directory_uri() ?>/img/placeholder.jpg" alt="Quem somos imagem">
+      </div>
+      <div class="quemsomos-text-content col-12 col-md-7">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+          incididunt ut labore et dolore magna aliqua</p>
+        <p class="mt-2">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat.</p>
+        <p class="mt-2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+          fugiat nulla pariatur.</p>
+        <p class="mt-2">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+          deserunt mollit anim id est laborum.</p>
+      </div>
+    </div>
+  </div>
 </section>
 
 
