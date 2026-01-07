@@ -1,0 +1,11 @@
+.footer {
+  background-color: $gray;
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .direitos {
+    background-color: $white;
+  }
+}
