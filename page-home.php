@@ -1,9 +1,6 @@
 <?php
 // Template Name: Home
-get_header();
-?>
-
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+get_header(); ?>
 
 <main>
   <section class="section-padding carousel-section">
@@ -11,19 +8,19 @@ get_header();
       <div class="carousel-inner">
 
         <div class="carousel-item active rounded">
-          <img src="<?php echo  get_template_directory_uri() ?>/img/placeholder.jpg" alt="Primeiro Slide">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/placeholder.jpg" alt="Primeiro Slide">
         </div>
 
         <div class="carousel-item rounded">
-          <img src="<?php echo get_template_directory_uri() ?>/img/placeholder.jpg" alt="Segundo Slide">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/placeholder.jpg" alt="Segundo Slide">
         </div>
 
         <div class="carousel-item rounded">
-          <img src="<?php echo  get_template_directory_uri() ?>/img/placeholder.jpg" alt="Terceiro Slide">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/placeholder.jpg" alt="Terceiro Slide">
         </div>
 
         <div class="carousel-item rounded">
-          <img src="<?php echo  get_template_directory_uri() ?>/img/placeholder.jpg" alt="Quarto Slide">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/placeholder.jpg" alt="Quarto Slide">
         </div>
 
         <button class="carousel-control-prev carousel-control" type="button" data-bs-target="#mainCarousel"
@@ -56,7 +53,7 @@ get_header();
       <h1 class="font-36 mb-5">Quem somos</h1>
       <div class="quemsomos-content row gap-5">
         <div class="quemsomos-image-container rounded col-12 col-md">
-          <img src="<?php echo  get_template_directory_uri() ?>/img/placeholder.jpg" alt="Quem somos imagem">
+          <img src="<?php echo get_template_directory_uri(); ?>/img/placeholder.jpg" alt="Quem somos imagem">
         </div>
         <div class="quemsomos-text-content col-12 col-md-7">
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
@@ -83,40 +80,51 @@ get_header();
           </svg>Ver mais</a>
       </header>
       <div class="row gap-5">
-        <?php 
-          $queryRecentPosts = new WP_Query(array(
-            'post_type'           => 'post',
-            'posts_per_page'      => 4,
-            'order'               => 'DESC',
-            'orderby'             => 'date'
-          ));
-        ?>
-        <?php if ( $queryRecentPosts->have_posts() ) : while ( $queryRecentPosts->have_posts() ) : $queryRecentPosts->the_post(); ?>
+        <?php $queryRecentPosts = new WP_Query([
+            "post_type" => "post",
+            "posts_per_page" => 4,
+            "order" => "DESC",
+            "orderby" => "date",
+        ]); ?>
+        <?php if ($queryRecentPosts->have_posts()):
+            while ($queryRecentPosts->have_posts()):
+                $queryRecentPosts->the_post(); ?>
 
         <article class="col-12 col-md text-center post-card">
-          <a href="<?php the_permalink() ?>">
-            <?php if ( has_post_thumbnail() ) : ?>
+          <a href="<?php the_permalink(); ?>">
+            <?php if (has_post_thumbnail()): ?>
             <div class="image-post-container-card">
-              <?php the_post_thumbnail('medium_large'); ?>
-              <div class="category font-14"><?php $categories = get_the_category();
-                        echo $categories[0]->name;
+              <?php the_post_thumbnail("medium_large"); ?>
+              <div class="category font-14"><?php
+              $categories = get_the_category();
+              echo $categories[0]->name;
               ?></div>
             </div>
           </a>
           <?php endif; ?>
-          <p class="fw-bold font-14 mb-0"><?php echo get_the_date('d/m/Y') ?></p>
-          <h3 class="font-16 mt-1 mb-1 title"><?php the_title() ?></h3>
-          <p class="font-14 fw-medium mb-2"><?php the_author() ?></p>
-          <p class="text-start font-14 description mb-2"><?php echo wp_trim_words( get_the_excerpt(), 15, '...' ); ?>
+          <p class="fw-bold font-14 mb-0"><?php echo get_the_date(
+              "d/m/Y"
+          ); ?></p>
+          <h3 class="font-16 mt-1 mb-1 title"><?php the_title(); ?></h3>
+          <p class="font-14 fw-medium mb-2"><?php the_author(); ?></p>
+          <p class="text-start font-14 description mb-2"><?php echo wp_trim_words(
+              get_the_excerpt(),
+              15,
+              "..."
+          ); ?>
           </p>
-          <a href="<?php the_permalink() ?>" class="d-flex align-items-center  justify-content-center"><svg
+          <a href="<?php the_permalink(); ?>" class="d-flex align-items-center  justify-content-center"><svg
               xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#333">
               <path
                 d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z" />
             </svg>Saiba mais</a>
         </article>
 
-        <?php endwhile; endif; ?>
+        <?php
+            endwhile;
+        endif; 
+        wp_reset_postdata();
+        ?>
       </div>
     </div>
   </section>
@@ -296,7 +304,5 @@ get_header();
     </div>
   </section>
 </main>
-
-<?php endwhile; else: endif; ?>
 
 <?php get_footer(); ?>

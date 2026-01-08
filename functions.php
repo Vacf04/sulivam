@@ -23,10 +23,10 @@ function sulivam_assets()
     );
     if(is_page_template('page-home.php')) {
         wp_enqueue_script(
-            "main-script",
-            get_template_directory_uri() . "/script.js",
+            "home-script",
+            get_template_directory_uri() . "/js/home.js",
             ["bootstrap-js"],
-            filemtime(get_template_directory() . "/script.js"),
+            filemtime(get_template_directory() . "/js/home.js"),
             true
         );
     }

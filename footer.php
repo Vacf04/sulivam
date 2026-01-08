@@ -4,15 +4,21 @@
         alt="Sulivam" /></a>
     <div class="menus d-flex align-items-start align-items-md-center gap-4 flex-column flex-md-row gap-4">
       <?php
-						$args = array(
-							'menu' =>
-        'Header', 'theme_location' => 'menu-principal', 'container' => false
-        ); wp_nav_menu( $args ); ?>
+      $args = [
+          "menu" => "Header",
+          "theme_location" => "menu-principal",
+          "container" => false,
+      ];
+      wp_nav_menu($args);
+      ?>
       <?php
-						$args = array(
-							'menu' =>
-        'Footer', 'theme_location' => 'menu-principal', 'container' => false
-        ); wp_nav_menu( $args ); ?>
+      $args = [
+          "menu" => "Footer",
+          "theme_location" => "menu-principal",
+          "container" => false,
+      ];
+      wp_nav_menu($args);
+      ?>
     </div>
     <ul>
       <li class="d-flex align-items-center gap-1"><svg xmlns="http://www.w3.org/2000/svg" height="24px"

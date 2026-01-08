@@ -29,5 +29,5 @@ const formContact = document.querySelector('.form-contact');
 
 formContact.addEventListener('submit', (e) => {
   e.preventDefault();
-  //logica para enviar formulario
+  //logica para validar e enviar o formulário.
 });
