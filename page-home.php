@@ -6,7 +6,7 @@ get_header();
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 
 <main>
-  <section class="pt-5 pb-5 carousel-section">
+  <section class="section-padding carousel-section">
     <div id="mainCarousel" class="carousel slide pb-3 px-4" data-bs-ride="carousel">
       <div class="carousel-inner">
 
@@ -51,7 +51,7 @@ get_header();
     </div>
   </section>
 
-  <section id="quemsomos" class="pb-5 pt-5">
+  <section id="quemsomos" class="section-padding">
     <div class="container">
       <h1 class="font-36 mb-5">Quem somos</h1>
       <div class="quemsomos-content row gap-5">
@@ -72,11 +72,56 @@ get_header();
     </div>
   </section>
 
-  <section class="blog-section" class="pb-5 pt-5">
+  <section class="blog-section" class="section-padding">
+    <div class="container">
+      <header class="d-flex justify-content-between mb-5">
+        <h2 class="font-36">Blog</h2>
+        <a href="/blog" class="d-flex align-items-center"><svg xmlns="http://www.w3.org/2000/svg" height="24px"
+            viewBox="0 -960 960 960" width="24px" fill="#333">
+            <path
+              d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z" />
+          </svg>Ver mais</a>
+      </header>
+      <div class="row gap-5">
+        <?php 
+          $queryRecentPosts = new WP_Query(array(
+            'post_type'           => 'post',
+            'posts_per_page'      => 4,
+            'order'               => 'DESC',
+            'orderby'             => 'date'
+          ));
+        ?>
+        <?php if ( $queryRecentPosts->have_posts() ) : while ( $queryRecentPosts->have_posts() ) : $queryRecentPosts->the_post(); ?>
 
+        <article class="col-12 col-md text-center post-card">
+          <a href="<?php the_permalink() ?>">
+            <?php if ( has_post_thumbnail() ) : ?>
+            <div class="image-post-container-card">
+              <?php the_post_thumbnail('medium_large'); ?>
+              <div class="category font-14"><?php $categories = get_the_category();
+                        echo $categories[0]->name;
+              ?></div>
+            </div>
+          </a>
+          <?php endif; ?>
+          <p class="fw-bold font-14 mb-0"><?php echo get_the_date('d/m/Y') ?></p>
+          <h3 class="font-16 mt-1 mb-1 title"><?php the_title() ?></h3>
+          <p class="font-14 fw-medium mb-2"><?php the_author() ?></p>
+          <p class="text-start font-14 description mb-2"><?php echo wp_trim_words( get_the_excerpt(), 15, '...' ); ?>
+          </p>
+          <a href="<?php the_permalink() ?>" class="d-flex align-items-center  justify-content-center"><svg
+              xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#333">
+              <path
+                d="M440-280h80v-160h160v-80H520v-160h-80v160H280v80h160v160Zm40 200q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Z" />
+            </svg>Saiba mais</a>
+        </article>
+
+        <?php endwhile; endif; ?>
+      </div>
+    </div>
   </section>
 
-  <section id="faq" class="p-5 pt-5">
+  <section id="faq" class="section-padding">
     <div class="container">
       <h2 class="font-36 mb-5">Dúvidas frequentes - FAQ</h2>
       <ul>
@@ -189,7 +234,7 @@ get_header();
     </div>
   </section>
 
-  <section id="contato" class="pb-5 pt-5">
+  <section id="contato" class="section-padding">
     <div class="container">
       <div class="row gap-5">
         <form class="form-contact col-12 col-md">
