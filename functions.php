@@ -21,13 +21,15 @@ function sulivam_assets()
         "5.3.3",
         true
     );
-    wp_enqueue_script(
-        "main-script",
-        get_template_directory_uri() . "/script.js",
-        ["bootstrap-js"],
-        filemtime(get_template_directory() . "/script.js"),
-        true
-    );
+    if(is_page_template('page-home.php')) {
+        wp_enqueue_script(
+            "main-script",
+            get_template_directory_uri() . "/script.js",
+            ["bootstrap-js"],
+            filemtime(get_template_directory() . "/script.js"),
+            true
+        );
+    }
 }
 add_action("wp_enqueue_scripts", "sulivam_assets");
 
@@ -53,5 +55,8 @@ function register_menus()
     ]);
 }
 add_action("init", "register_menus");
+
+// Habilitar suporte a thumbnail
+add_theme_support('post-thumbnails', array('post'));
 
 ?>

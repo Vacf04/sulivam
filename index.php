@@ -5,7 +5,7 @@
 
 <?php endwhile; else: ?>
 
-<section class="introducao-interna introducao-geral">
+<section class="not-found-section">
   <div class="container">
     <h1>Página não encontrada.</h1>
   </div>

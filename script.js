@@ -16,6 +16,15 @@ buttonsSlide.forEach((button) => {
   });
 });
 
+const perguntaFaq = document.querySelectorAll('#faq ul .pergunta');
+
+perguntaFaq.forEach((pergunta) =>
+  pergunta.addEventListener('click', () => {
+    pergunta.nextElementSibling.classList.toggle('active');
+    pergunta.classList.toggle('active');
+  }),
+);
+
 const formContact = document.querySelector('.form-contact');
 
 formContact.addEventListener('submit', (e) => {

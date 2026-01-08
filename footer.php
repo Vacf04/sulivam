@@ -1,4 +1,4 @@
-<footer class="footer">
+<footer class="footer mt-5">
   <div class="container d-flex justify-content-between align-items-center p-3 flex-column flex-md-row gap-4">
     <a href="/" class="d-block"><img src="<?php echo get_template_directory_uri(); ?>/img/sulivam.svg"
         alt="Sulivam" /></a>
